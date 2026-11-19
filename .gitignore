@@ -1,0 +1,8 @@
+__pycache__/
+.venv/
+Fast-FoundationStereo/
+models/
+output/
+d400_series_Early-Access-BETA_fw_5.17.5.15/
+
+.ffs-export/
