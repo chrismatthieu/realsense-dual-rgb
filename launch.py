@@ -7,11 +7,12 @@ import sys
 
 
 ROOT = Path(__file__).resolve().parent
+ASSETS = Path(os.environ.get("DUAL_RGB_ASSETS", ROOT)).expanduser().resolve()
 CHECKPOINT = Path.home() / "Downloads" / "model_best_bp2_serialize.pth"
-UPSTREAM = ROOT / "Fast-FoundationStereo"
-GPU_PYTHON = ROOT / ".ffs-export/bin/python"
-CPU_PYTHON = ROOT / ".venv/bin/python"
-MODELS = ROOT / "models"
+UPSTREAM = ASSETS / "Fast-FoundationStereo"
+GPU_PYTHON = ASSETS / ".ffs-export/bin/python"
+CPU_PYTHON = ASSETS / ".venv/bin/python"
+MODELS = ASSETS / "models"
 
 
 def presets():

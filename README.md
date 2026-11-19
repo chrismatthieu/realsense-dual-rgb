@@ -21,6 +21,22 @@ or TensorRT FP16/FP32. Use `s` to toggle sensor depth and fusion on model preset
 in a preview to return to the menu. The FP16 preset is available for comparison.
 On this Thor, the FP32 engine produced a usable preview during testing.
 
+## Corebrum Apps packaging
+
+The release target is Ubuntu 24.04 ARM64 on Jetson AGX Thor with a USB D405.
+Place the NVIDIA checkout, model exports and Python environments under
+`~/Projects/dual-rgb` using the steps below. For a different location, set
+`DUAL_RGB_ASSETS` to that directory before launching the app.
+
+With an authorized `LICENSE` at the repository root, run
+`python3 package-app.py --license SPDX_ID` using the license's SPDX identifier.
+The archive and its checksum-bearing `corebrum-app.json` are written to
+`output/marketplace`. Attach both to the public GitHub release
+`corebrum-app-v1.0.0` and submit the release URL from the
+[Corebrum publish page](https://marketplace.corebrum.com/publish/app).
+The release archive contains the launcher and application code. The camera
+firmware, NVIDIA model files and Python environments are installed separately.
+
 ## Verify camera capture
 
 Run from a Thor desktop terminal with RealSense Viewer and other camera clients

@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -euo pipefail
+root="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+export DUAL_RGB_ASSETS="${DUAL_RGB_ASSETS:-$HOME/Projects/dual-rgb}"
+export LD_LIBRARY_PATH="/usr/lib/aarch64-linux-gnu${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+
+if ! python3 -c 'import numpy, cv2, pyrealsense2'; then
+    printf 'Install NumPy, OpenCV and librealsense 2.59.2 or newer with Python bindings. See %s/README.md.\n' "$root" >&2
+    exit 1
+fi
+
+if [[ $# -gt 0 ]]; then
+    exec python3 "$root/live.py" "$@"
+fi
+exec python3 "$root/launch.py"
